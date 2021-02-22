@@ -1,9 +1,9 @@
 .loginOrSignUp{
-  width: 60%;
-  height: 80%;
+  width: 40%;
+  height: 65%;
   background-color: lightGreen;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   border: 5px solid darkgreen;
   transform: translate(-50%, -50%);
@@ -53,6 +53,7 @@
 
 body {
   padding: 5px;
+  background-image: url("../images/download.jpg");
 }
 
 .jumbotron {

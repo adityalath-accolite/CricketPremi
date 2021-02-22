@@ -6,7 +6,7 @@
     </div>
     
     <div class="container">
-        <div ng-if="login">
+        <div ng-if="!login">
             <form name="userInfo">
                 Fullname: <input class="input" type="text" name="name" ng-model="$parent.name"><br>
                 <span class="warn" ng-show="userInfo.name.$touched && !$parent.name.includes(' ')">
@@ -21,6 +21,11 @@
                     *username must be atleast of length 5
                 </span><br>
     
+                Email address: <input class="input" type="email" name="email" ng-model="$parent.email"><br>
+                <span class="warn" ng-show="userInfo.email.$touched && userInfo.email.$invalid">
+                    *email is wrong
+                </span><br>
+
                 Password: <input class="input" type="password" name="password" ng-model="$parent.password"><br>
                 <span class="warn" ng-show="userInfo.password.$touched && !isPasswordValid()">
                     *passord must contain a numeric, a small letter and a capital letter
@@ -33,23 +38,26 @@
                 <input class="input" type="radio" name="gender" value="Male" ng-model="$parent.gender" required>Male
                 <input type="radio" name="gender" value="Female" ng-model="$parent.gender">Female
                 <input type="radio" name="gender" value="prefer not to say" ng-model="$parent.gender">Prefer not to say
-                <br>
+                <br><br>
 
-                Date of Birth: <input class="input" type="date" name="dob" ng-model="$parent.dob"><br>
+                Date of Birth: <input class="input" type="date" name="dob" ng-model="$parent.dob"><br><br>
 
                 Occupation: <select class="input" ng-model="$parent. occ">
                     <option name='occ' ng-repeat="x in occupations">{{x}}</option>
-                </select><br>
+                </select><br><br>
 
                 <button class="input" id="submit" ng-click="$parent.onSubmit()" 
-                    ng-disabled="!$parent.name.includes(' ') || $parent.username.includes(' ') || $parent.username=='' || $parent.username.length<5 || $parent.password.length<10 || !isPasswordValid() || $parent.password=='' || $parent.gender=='' || $parent.dob=='' || $parent.occ==''"
+                    ng-disabled="!$parent.name.includes(' ') || $parent.username.includes(' ') || $parent.username=='' || $parent.username.length<5 || $parent.password.length<10 || !isPasswordValid() || $parent.password=='' || $parent.gender=='' || $parent.dob=='' || $parent.occ=='' || $parent.email==''"
                 ><b>Submit</b>   
                 </button>
             </form>
         </div>
 
-        <div ng-if="!login">
-    
+        <div ng-if="login">
+            Username: <input class="input" type="text" name="username" ng-model="$parent.loginUsername"><br>
+            Password: <input class="input" type="password" name="password" ng-model="$parent.loginPassword"><br>
+            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button>
+            <span ng-show="!$parent.loggedIn">Invalid credentials, try again with valid credentials</span>
         </div>
     </div>
 </div>

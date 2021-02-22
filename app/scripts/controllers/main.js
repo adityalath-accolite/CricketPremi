@@ -11,13 +11,20 @@ const CRIC_URL = 'http://cricapi.com/api/matches/fWOeJIGXHcUNEzDuhw0IIF7n5qa2';
 angular.module('viaGruntApp')
   .controller('MainCtrl', function ($scope, $http) {  //string interpolation for 2-way data binding
     $scope.login = true;
+    //localStorage.clear();
+    $scope.users = localStorage.getItem('array')==null?[]:JSON.parse(localStorage.getItem('array'));
 
-    $scope.name = ""
-    $scope.username = ""
-    $scope.password = ""
-    $scope.gender = ""
-    $scope.dob = ""
-    $scope.occ = ""
+    $scope.loggedIn = true;
+    $scope.loginUsername = '';
+    $scope.loginPassword = '';
+    
+    $scope.name = "";
+    $scope.username = "";
+    $scope.email = "";
+    $scope.password = "";
+    $scope.gender = "";
+    $scope.dob = "";
+    $scope.occ = "";
     $scope.occupations = ["Student","Engineer","Scientist","Doctor","Politician","Actor","Singer","Cricketer","Sportsperson","Carpenter","Architect","Buttler","Cook","Other"];
     
     $scope.isPasswordValid = () => {
@@ -36,8 +43,23 @@ angular.module('viaGruntApp')
     }
 
     $scope.onSubmit = () => {
-      console.log("Form has been submitted");
+      $scope.users.push({
+        name: $scope.name,
+        username: $scope.username,
+        password: $scope.password,
+        gender: $scope.gender,
+        dob: $scope.dob,
+        occ: $scope.occ
+      })
+      console.log("items after are ",$scope.users); 
+      localStorage.setItem('array',JSON.stringify($scope.users)); 
     }
+
+    $scope.onLogin = () => {
+
+    }
+
+
 
     $scope.onclick = () => {
       $scope.iter = ($scope.iter == 0 ? 1 : 0);
