@@ -1,0 +1,55 @@
+<div class="loginOrSignUp" ng-controller="MainCtrl">
+    <div class="loginHeader">
+        <button ng-click="login=false" class="options">SignUp</button>
+        <b>|</b>
+        <button ng-click="login=true" class="options">Login</button>
+    </div>
+    
+    <div class="container">
+        <div ng-if="login">
+            <form name="userInfo">
+                Fullname: <input class="input" type="text" name="name" ng-model="$parent.name"><br>
+                <span class="warn" ng-show="userInfo.name.$touched && !$parent.name.includes(' ')">
+                    *Fullname should contain firstname as well as lastname
+                </span><br>
+    
+                Username: <input class="input" type="text" name="username" ng-model="$parent.username"><br>
+                <span class="warn" ng-show="userInfo.username.$touched && $parent.username.includes(' ')">
+                    *space not allowed in username
+                </span>
+                <span class="warn" ng-show="userInfo.username.$touched && $parent.username.length<5">
+                    *username must be atleast of length 5
+                </span><br>
+    
+                Password: <input class="input" type="password" name="password" ng-model="$parent.password"><br>
+                <span class="warn" ng-show="userInfo.password.$touched && !isPasswordValid()">
+                    *passord must contain a numeric, a small letter and a capital letter
+                </span>
+                <span class="warn" ng-show="userInfo.password.$touched && $parent.password.length<10">
+                    *password must be atleast of length 10
+                </span><br>
+
+                Gender: 
+                <input class="input" type="radio" name="gender" value="Male" ng-model="$parent.gender" required>Male
+                <input type="radio" name="gender" value="Female" ng-model="$parent.gender">Female
+                <input type="radio" name="gender" value="prefer not to say" ng-model="$parent.gender">Prefer not to say
+                <br>
+
+                Date of Birth: <input class="input" type="date" name="dob" ng-model="$parent.dob"><br>
+
+                Occupation: <select class="input" ng-model="$parent. occ">
+                    <option name='occ' ng-repeat="x in occupations">{{x}}</option>
+                </select><br>
+
+                <button class="input" id="submit" ng-click="$parent.onSubmit()" 
+                    ng-disabled="!$parent.name.includes(' ') || $parent.username.includes(' ') || $parent.username=='' || $parent.username.length<5 || $parent.password.length<10 || !isPasswordValid() || $parent.password=='' || $parent.gender=='' || $parent.dob=='' || $parent.occ==''"
+                ><b>Submit</b>   
+                </button>
+            </form>
+        </div>
+
+        <div ng-if="!login">
+    
+        </div>
+    </div>
+</div>

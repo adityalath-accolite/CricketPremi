@@ -1,8 +1,63 @@
+.loginOrSignUp{
+  width: 60%;
+  height: 80%;
+  background-color: lightGreen;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 5px solid darkgreen;
+  transform: translate(-50%, -50%);
+}
+
+.loginHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid darkgreen; 
+}
+
+.options{
+  text-align: center;
+  flex: 1;
+  height: 30px;
+  background-color: rgb(34, 214, 34);
+}
+
+.warn{
+  color: red;
+  font-size: small;
+  font: 100;
+}
+
+.container{
+  text-align: center;
+}
+
+.input{
+  margin-top: 12px;
+}
+
+#submit{
+  background-color: rgb(12, 12, 97);
+  color: #e5e5e5;
+  font-size: large;
+  height: 40px;
+  width: 100px;
+  border-radius: 10%;
+}
+
+#submit:disabled{
+  background-color: red;
+}
+
 body {
-  padding: 0;
+  padding: 5px;
 }
 
 .jumbotron {
+  padding: 5px;
   text-align: center;
+  background-color: lightblue;
   border-bottom: 1px solid #e5e5e5;
 }
