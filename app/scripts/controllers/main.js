@@ -9,11 +9,13 @@ const CRIC_URL = 'http://cricapi.com/api/matches/fWOeJIGXHcUNEzDuhw0IIF7n5qa2';
  * Controller of the viaGruntApp
  */
 angular.module('viaGruntApp')
-  .controller('MainCtrl', function ($scope, $http) {  //string interpolation for 2-way data binding
+  .controller('MainCtrl', function ($scope, $http,$location) {  //string interpolation for 2-way data binding 
+    
     $scope.login = true;
     //localStorage.clear();
     $scope.users = localStorage.getItem('array')==null?[]:JSON.parse(localStorage.getItem('array'));
-
+    //console.log($scope.users);
+    
     $scope.loggedIn = true;
     $scope.loginUsername = '';
     $scope.loginPassword = '';
@@ -42,21 +44,51 @@ angular.module('viaGruntApp')
       return capital && small && numeric;
     }
 
+    $scope.isEmailAlreadyUsed = () => {
+      let bool = false;
+      angular.forEach($scope.users,(user) => {
+        if($scope.email==user.email)
+        {
+          bool = true;
+        }
+      })
+      return bool;
+    }
+
+    $scope.isUsernameAlreadyUsed = () => {
+      let bool = false;
+      angular.forEach($scope.users,(user) => {
+        if($scope.username==user.username)
+        {
+          bool = true;
+        }
+      })
+      return bool;
+    }
+
     $scope.onSubmit = () => {
       $scope.users.push({
         name: $scope.name,
         username: $scope.username,
+        email: $scope.email,
         password: $scope.password,
         gender: $scope.gender,
         dob: $scope.dob,
         occ: $scope.occ
       })
-      console.log("items after are ",$scope.users); 
       localStorage.setItem('array',JSON.stringify($scope.users)); 
+      $location.path("/nowhere");
     }
 
     $scope.onLogin = () => {
-
+      $scope.loggedIn = false;
+      angular.forEach($scope.users,(user) => {
+        if($scope.loginUsername==user.username && $scope.loginPassword==user.password)
+        {
+          $scope.loggedIn = true;
+          $location.path("/home");
+        }
+      })
     }
 
 

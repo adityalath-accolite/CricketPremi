@@ -19,15 +19,21 @@
                 </span>
                 <span class="warn" ng-show="userInfo.username.$touched && $parent.username.length<5">
                     *username must be atleast of length 5
+                </span>
+                <span class="warn" ng-show="userInfo.username.$touched && $parent.isUsernameAlreadyUsed()">
+                    *this email is already used, try using another one 
                 </span><br>
     
                 Email address: <input class="input" type="email" name="email" ng-model="$parent.email"><br>
                 <span class="warn" ng-show="userInfo.email.$touched && userInfo.email.$invalid">
                     *email is wrong
+                </span>      
+                <span class="warn" ng-show="userInfo.email.$touched && $parent.isEmailAlreadyUsed()">
+                    *this email is already used, try using another one 
                 </span><br>
 
                 Password: <input class="input" type="password" name="password" ng-model="$parent.password"><br>
-                <span class="warn" ng-show="userInfo.password.$touched && !isPasswordValid()">
+                <span class="warn" ng-show="userInfo.password.$touched && !$parent.isPasswordValid()">
                     *passord must contain a numeric, a small letter and a capital letter
                 </span>
                 <span class="warn" ng-show="userInfo.password.$touched && $parent.password.length<10">
@@ -47,7 +53,7 @@
                 </select><br><br>
 
                 <button class="input" id="submit" ng-click="$parent.onSubmit()" 
-                    ng-disabled="!$parent.name.includes(' ') || $parent.username.includes(' ') || $parent.username=='' || $parent.username.length<5 || $parent.password.length<10 || !isPasswordValid() || $parent.password=='' || $parent.gender=='' || $parent.dob=='' || $parent.occ=='' || $parent.email==''"
+                    ng-disabled="!$parent.name.includes(' ') || $parent.username.includes(' ') || $parent.username=='' || $parent.username.length<5 || $parent.password.length<10 || !$parent.isPasswordValid() || $parent.password=='' || $parent.gender=='' || $parent.dob=='' || $parent.occ=='' || $parent.email=='' || $parent.isEmailAlreadyUsed() || $parent.isUsernameAlreadyUsed()"
                 ><b>Submit</b>   
                 </button>
             </form>
@@ -56,7 +62,7 @@
         <div ng-if="login">
             Username: <input class="input" type="text" name="username" ng-model="$parent.loginUsername"><br>
             Password: <input class="input" type="password" name="password" ng-model="$parent.loginPassword"><br>
-            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button>
+            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br>
             <span ng-show="!$parent.loggedIn">Invalid credentials, try again with valid credentials</span>
         </div>
     </div>
