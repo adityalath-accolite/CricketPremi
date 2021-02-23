@@ -1,6 +1,7 @@
 'use strict';
-const URL = 'https://covid19.mathdro.id/api';
+
 const CRIC_URL = 'http://cricapi.com/api/matches/fWOeJIGXHcUNEzDuhw0IIF7n5qa2';
+const SCORECARD = 'https://cricapi.com/api/fantasySummary/'
 /**
  * @ngdoc function
  * @name viaGruntApp.controller:MainCtrl
@@ -91,23 +92,28 @@ angular.module('viaGruntApp')
       })
     }
 
-
-
-    $scope.onclick = () => {
-      $scope.iter = ($scope.iter == 0 ? 1 : 0);
-    }
-
-    let data = 0
-    $http.get(URL).then((resp) => {
-      console.log('api is',resp);
-      data = resp.data;
-      console.log("data is ",data)
-    }, (err) => {console.log('cant find the api')});
-    
+    let matches;
+    $scope.ongoingMatches = [];
     $http.get(CRIC_URL).then((resp) => {
-      console.log('cricket is',resp);
-      data = resp.data;
-      console.log("data is ",data)
-    }, (err) => {console.log('cant find the api')});
+      matches = resp.data.matches;
+      console.log(matches);
+      angular.forEach(matches, ele => {
+        if(ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined)
+        {
+          $scope.ongoingMatches.push(ele);
+        }
+      })
+    });
+
+    // $http({
+    //   method: 'GET',
+    //   url: SCORECARD,
+    //   Request: {
+    //     "unique_id": "1034811",
+    //     "apikey": "fWOeJIGXHcUNEzDuhw0IIF7n5qa2"
+    //   }
+    // }).then((resp) => {
+    //   console.log("Match scorecard looks like ",resp);
+    // });
 
   });

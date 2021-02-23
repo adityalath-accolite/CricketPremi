@@ -49,7 +49,7 @@
                 Date of Birth: <input class="input" type="date" name="dob" ng-model="$parent.dob"><br><br>
 
                 Occupation: <select class="input" ng-model="$parent. occ">
-                    <option name='occ' ng-repeat="x in occupations">{{x}}</option>
+                    <option name='occ' ng-repeat="x in occupations | orderBy">{{x}}</option>
                 </select><br><br>
 
                 <button class="input" id="submit" ng-click="$parent.onSubmit()" 
