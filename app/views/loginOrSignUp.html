@@ -49,7 +49,7 @@
                 Date of Birth: <input class="input" type="date" name="dob" ng-model="$parent.dob"><br><br>
 
                 Occupation: <select class="input" ng-model="$parent. occ">
-                    <option name='occ' ng-repeat="x in occupations">{{x}}</option>
+                    <option name='occ' ng-repeat="x in occupations | orderBy">{{x}}</option>
                 </select><br><br>
 
                 <button class="input" id="submit" ng-click="$parent.onSubmit()" 
@@ -62,7 +62,7 @@
         <div ng-if="login">
             Username: <input class="input" type="text" name="username" ng-model="$parent.loginUsername"><br>
             Password: <input class="input" type="password" name="password" ng-model="$parent.loginPassword"><br>
-            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br>
+            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br><br>
             <span ng-show="!$parent.loggedIn">Invalid credentials, try again with valid credentials</span>
         </div>
     </div>
