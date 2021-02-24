@@ -62,7 +62,7 @@
         <div ng-if="login">
             Username: <input class="input" type="text" name="username" ng-model="$parent.loginUsername"><br>
             Password: <input class="input" type="password" name="password" ng-model="$parent.loginPassword"><br>
-            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br>
+            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br><br>
             <span ng-show="!$parent.loggedIn">Invalid credentials, try again with valid credentials</span>
         </div>
     </div>

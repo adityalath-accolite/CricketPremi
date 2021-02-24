@@ -15,7 +15,7 @@ angular.module('viaGruntApp')
     $scope.login = true;
     //localStorage.clear();
     $scope.users = localStorage.getItem('array')==null?[]:JSON.parse(localStorage.getItem('array'));
-    //console.log($scope.users);
+    console.log($scope.users);
     
     $scope.loggedIn = true;
     $scope.loginUsername = '';
