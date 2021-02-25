@@ -102,10 +102,10 @@ angular.module('viaGruntApp')
           if (ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined) {
             $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
               let score = resp.data.score;
-              let score_arr = score.split('v')
+              let score_arr = score.split(' v ')
               ele.team1 = score_arr[0];
               ele.team2 = score_arr[1];
-              console.log("score for the match is ", score_arr[0]);
+              console.log("score for the match is ", resp.data);
             });
             $scope.ongoingMatches.push(ele);
           }
