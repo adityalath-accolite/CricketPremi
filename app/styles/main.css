@@ -1,7 +1,7 @@
 .loginOrSignUp{
   width: 40%;
   height: 65%;
-  background-color: lightGreen;
+  background-color: #90ee90;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -93,6 +93,9 @@ body {
   background-image: url("../images/down.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .heading{
@@ -112,5 +115,5 @@ body {
 }
 
 .teams{
-  flex: 10;
+  flex: 50;
 }

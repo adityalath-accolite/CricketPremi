@@ -2,34 +2,39 @@
     <h1 class="heading">Welcome to CricketPremi!</h1>
     <div class="matchList" ng-controller="MainCtrl">
         <div class="match" ng-repeat="match in ongoingMatches | orderBy:'ongoingMatches.dateTimeGMT':true">
-            <div ng-if="match.winner_team==undefined" style="color:red">
-                <li>Live</li>
+    
+            <span class="score" style="flex: 1;"></span>
+            <span class="score" style="flex: 2;">{{match.team1}}</span>
+            <div class="matter" style="flex: 6;">
+                <div ng-if="match.winner_team==undefined" style="color:red">
+                    <li>Live</li>
+                </div>
+                <div ng-if="match.winner_team!=undefined" style="color:green">
+                    <li>Completed</li>
+                </div>
+    
+                <span class="clash">
+                    <span class="teams" style="text-align: end;">{{match['team-1']}}&nbsp</span>
+                    <span class="capital"><b>VS</b></span>
+                    <span class="teams" style="text-align: start;">&nbsp{{match['team-2']}}</span>
+                </span>
+    
+                <span>Dated: {{match.date | date}}</span>
+    
+                <div ng-if="match.winner_team==undefined && !match.matchStarted">
+                    {{match.toss_winner_team}} has won the toss and the {{match.type}} action will begin shortly
+                </div>
+                <div ng-if="match.winner_team==undefined && match.matchStarted">
+                    {{match.toss_winner_team}} has won the toss
+                </div>
+                <div style="padding: 5px;;" ng-if="match.winner_team!=undefined">
+                    {{match.winner_team}} has won the {{match.type}} match
+                </div>
             </div>
-            <div ng-if="match.winner_team!=undefined" style="color:green">
-                <li>Completed</li>
-            </div>
-
-            <span class="clash">
-                <span class="teams" style="text-align: end;">{{match['team-1']}}</span>
-                <span class="capital"><b> VS </b></span>
-                <span class="teams" style="text-align: start;">{{match['team-2']}}</span>
-            </span>
-
-            <span>Dated: {{match.date | date}}</span>
-
-            <div ng-if="match.winner_team==undefined && !match.matchStarted">
-                {{match.toss_winner_team}} has won the toss and the {{match.type}} action will begin shortly
-            </div>
-            <div ng-if="match.winner_team==undefined && match.matchStarted">
-                {{match.toss_winner_team}} has won the toss
-            </div>
-            <div style="padding: 5px;;" ng-if="match.winner_team!=undefined">
-                {{match.winner_team}} has won the {{match.type}} match
-            </div>
-
+            <span class="score" style="flex: 2;">{{match.team2}}</span>
+            <span class="score" style="flex: 1;"></span>
         </div>
-    </div>
-    <p class="copyright">
+    </div><p class="copyright">
         <b>@copyrighted by Aditya Lath
         <br>Developer contact: 9877570729 
         <br>Developer Email: lath2411@gmail.com 
