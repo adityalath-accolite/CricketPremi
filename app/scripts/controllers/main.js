@@ -1,7 +1,7 @@
 'use strict';
 
 const CRIC_URL = 'http://cricapi.com/api/matches/fWOeJIGXHcUNEzDuhw0IIF7n5qa2';
-const SCORECARD = 'https://cricapi.com/api/fantasySummary/'
+const SCORECARD = 'https://cricapi.com/api/cricketScore/fWOeJIGXHcUNEzDuhw0IIF7n5qa2'
 /**
  * @ngdoc function
  * @name viaGruntApp.controller:MainCtrl
@@ -10,7 +10,7 @@ const SCORECARD = 'https://cricapi.com/api/fantasySummary/'
  * Controller of the viaGruntApp
  */
 angular.module('viaGruntApp')
-  .controller('MainCtrl', function ($scope, $http,$location) {  //string interpolation for 2-way data binding 
+  .controller('MainCtrl', function ($scope, $timeout, $http,$location) {  //string interpolation for 2-way data binding 
     
     $scope.login = true;
     //localStorage.clear();
@@ -97,23 +97,19 @@ angular.module('viaGruntApp')
     $http.get(CRIC_URL).then((resp) => {
       matches = resp.data.matches;
       console.log(matches);
-      angular.forEach(matches, ele => {
-        if(ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined)
-        {
-          $scope.ongoingMatches.push(ele);
-        }
-      })
+      $timeout(() => {
+        angular.forEach(matches, ele => {
+          if (ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined) {
+            $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
+              let score = resp.data.score;
+              let score_arr = score.split('v')
+              ele.team1 = score_arr[0];
+              ele.team2 = score_arr[1];
+              console.log("score for the match is ", score_arr[0]);
+            });
+            $scope.ongoingMatches.push(ele);
+          }
+        })
+      }, 1000);
     });
-
-    // $http({
-    //   method: 'GET',
-    //   url: SCORECARD,
-    //   Request: {
-    //     "unique_id": "1034811",
-    //     "apikey": "fWOeJIGXHcUNEzDuhw0IIF7n5qa2"
-    //   }
-    // }).then((resp) => {
-    //   console.log("Match scorecard looks like ",resp);
-    // });
-
   });
