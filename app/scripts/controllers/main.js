@@ -10,7 +10,7 @@ const SCORECARD = 'https://cricapi.com/api/cricketScore/fWOeJIGXHcUNEzDuhw0IIF7n
  * Controller of the viaGruntApp
  */
 angular.module('viaGruntApp')
-  .controller('MainCtrl', function ($scope, $timeout, $http,$location) {  //string interpolation for 2-way data binding 
+  .controller('MainCtrl', function ($scope, $interval, $http, $location) {  //string interpolation for 2-way data binding 
     
     $scope.login = true;
     //localStorage.clear();
@@ -97,19 +97,31 @@ angular.module('viaGruntApp')
     $http.get(CRIC_URL).then((resp) => {
       matches = resp.data.matches;
       console.log(matches);
-      $timeout(() => {
-        angular.forEach(matches, ele => {
-          if (ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined) {
-            $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
-              let score = resp.data.score;
-              let score_arr = score.split(' v ')
-              ele.team1 = score_arr[0];
-              ele.team2 = score_arr[1];
-              console.log("score for the match is ", resp.data);
-            });
-            $scope.ongoingMatches.push(ele);
-          }
-        })
-      }, 1000);
+      angular.forEach(matches, ele => {
+        if (ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined) {
+          $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
+            let score = resp.data.score;
+            let score_arr = score.split(' v ')
+            ele.team1 = score_arr[0];
+            ele.team2 = score_arr[1];
+            console.log("score for the match is ", resp.data);
+          });
+          $scope.ongoingMatches.push(ele);
+        }
+      })
     });
+
+    $interval(() => {
+      angular.forEach($scope.ongoingMatches,(ele) => {
+        console.log("Calling for a different time");
+        $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
+          let score = resp.data.score;
+          let score_arr = score.split(' v ')
+          ele.team1 = score_arr[0];
+          ele.team2 = score_arr[1];
+          console.log("updated score after timeout is ", resp.data);
+        });
+      })
+    },2000);
+
   });
