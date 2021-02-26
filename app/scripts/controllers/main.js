@@ -1,7 +1,10 @@
 'use strict';
 
-const CRIC_URL = 'http://cricapi.com/api/matches/fWOeJIGXHcUNEzDuhw0IIF7n5qa2';
-const SCORECARD = 'https://cricapi.com/api/cricketScore/fWOeJIGXHcUNEzDuhw0IIF7n5qa2'
+const KEY = '4jUt8b9e8xMvcEyPQJkNh8nPaTw1';  //fWOeJIGXHcUNEzDuhw0IIF7n5qa2
+const CRIC_URL = 'http://cricapi.com/api/matches/' + KEY;
+const SCORES = 'https://cricapi.com/api/cricketScore/' + KEY;
+const SCORECARD = 'https://cricapi.com/api/fantasySummary/' + KEY;
+
 /**
  * @ngdoc function
  * @name viaGruntApp.controller:MainCtrl
@@ -10,12 +13,10 @@ const SCORECARD = 'https://cricapi.com/api/cricketScore/fWOeJIGXHcUNEzDuhw0IIF7n
  * Controller of the viaGruntApp
  */
 angular.module('viaGruntApp')
-  .controller('MainCtrl', function ($scope, $interval, $http, $location) {  //string interpolation for 2-way data binding 
+  .controller('MainCtrl', function ($scope, $location) {
     
     $scope.login = true;
-    //localStorage.clear();
     $scope.users = localStorage.getItem('array')==null?[]:JSON.parse(localStorage.getItem('array'));
-    console.log($scope.users);
     
     $scope.loggedIn = true;
     $scope.loginUsername = '';
@@ -91,37 +92,54 @@ angular.module('viaGruntApp')
         }
       })
     }
-
+    
+  })
+  .controller('HomePage', function($scope, Data, $interval, $http, $location){
     let matches;
     $scope.ongoingMatches = [];
     $http.get(CRIC_URL).then((resp) => {
       matches = resp.data.matches;
-      console.log(matches);
       angular.forEach(matches, ele => {
         if (ele.toss_winner_team != 'no toss' && ele.toss_winner_team != undefined) {
-          $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
+          $http.get(SCORES + "?unique_id=" + ele.unique_id).then((resp) => {
             let score = resp.data.score;
             let score_arr = score.split(' v ')
             ele.team1 = score_arr[0];
             ele.team2 = score_arr[1];
-            console.log("score for the match is ", resp.data);
           });
           $scope.ongoingMatches.push(ele);
         }
       })
     });
 
-    $interval(() => {
-      angular.forEach($scope.ongoingMatches,(ele) => {
-        console.log("Calling for a different time");
-        $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
-          let score = resp.data.score;
-          let score_arr = score.split(' v ')
-          ele.team1 = score_arr[0];
-          ele.team2 = score_arr[1];
-          console.log("updated score after timeout is ", resp.data);
-        });
-      })
-    },2000);
+    // $interval(() => {
+    //   angular.forEach($scope.ongoingMatches,(ele) => {
+    //     console.log("Calling for a different time");
+    //     $http.get(SCORECARD + "?unique_id=" + ele.unique_id).then((resp) => {
+    //       let score = resp.data.score;
+    //       let score_arr = score.split(' v ')
+    //       ele.team1 = score_arr[0];
+    //       ele.team2 = score_arr[1];
+    //       console.log("updated score after timeout is ", resp.data);
+    //     });
+    //   })
+    // },2000);
 
+    $scope.match_id = Data;
+
+    $scope.idToScoreboard = (id) => {
+      $scope.match_id.Field = id;
+      console.log("unique_id is ",id)
+      $location.path("/scorecard");
+    }
+  })
+  .controller('ScoreCard', function ($scope, Data, $interval, $http, $location) {
+    $scope.match_id = Data;
+    $scope.response;
+    $http.get(SCORECARD+"?unique_id=1233972").then((resp) => {     //+$scope.match_id.Field
+      $scope.response = resp.data.data;  
+      console.log("new player in the league is ",resp.data.data);
+    })
+
+    $scope.showScorecard = false;
   });

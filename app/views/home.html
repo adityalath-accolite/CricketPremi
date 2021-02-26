@@ -1,8 +1,7 @@
 <div class="principal">
     <h1 class="heading">Welcome to CricketPremi!</h1>
-    <div class="matchList" ng-controller="MainCtrl">
-        <div class="match" ng-repeat="match in ongoingMatches | orderBy:'ongoingMatches.dateTimeGMT':true">
-    
+    <div class="matchList" ng-controller="HomePage">
+        <div class="match" ng-click="$parent.idToScoreboard(match.unique_id)" ng-repeat="match in ongoingMatches | orderBy:'ongoingMatches.dateTimeGMT':true" ng-click="alert('gsg')">
             <span class="score" style="flex: 1;"></span>
             <span class="score" style="flex: 2;">{{match.team1}}</span>
             <div class="matter" style="flex: 6;">
@@ -34,9 +33,11 @@
             <span class="score" style="flex: 2;">{{match.team2}}</span>
             <span class="score" style="flex: 1;"></span>
         </div>
-    </div><p class="copyright">
+    </div>
+    <p class="copyright">
         <b>@copyrighted by Aditya Lath
         <br>Developer contact: 9877570729 
         <br>Developer Email: lath2411@gmail.com 
-        <br><i>contact if faced any technical glitches</i></b></p>
+        <br><i>contact if faced any technical glitches</i></b>
+    </p>
 </div>

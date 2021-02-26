@@ -1,0 +1,32 @@
+<div ng-controller="ScoreCard">
+    <div class="full">
+        <div class="loginHeader">
+            <button ng-click="showScorecard=true" class="options">Scorecard</button>
+            <b>|</b>
+            <button ng-click="showScorecard=false" class="options">Teams</button>
+        </div>
+        
+        <div class="container">
+            <div ng-if="!showScorecard">
+                <div class="bothTeams">
+                    <div>
+                        <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[0].name}}</div>
+                        <div class="team" ng-repeat="player in response.team[0].players">
+                            {{player.name}}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[1].name}}</div>
+                        <div class="team" ng-repeat="player in response.team[1].players">
+                            {{player.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="login">
+        
+            </div>
+        </div>
+        
+        </div>
+</div>

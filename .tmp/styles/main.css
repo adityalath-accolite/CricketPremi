@@ -1,7 +1,7 @@
 .loginOrSignUp{
   width: 40%;
   height: 65%;
-  background-color: #90ee90;
+  background-color: #111111;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -10,11 +10,11 @@
 }
 
 .loginHeader{
+  padding-bottom: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-bottom: 5px solid darkgreen; 
 }
 
 .options{
@@ -94,6 +94,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -116,4 +117,36 @@ body {
 
 .teams{
   flex: 50;
+}
+
+.full{
+  padding: 0%;
+  width: 80%;
+  height: 100%;
+  background-color: #90ee90;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bothTeams{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  padding-top: 5%;
+  gap: 50px;
+}
+
+.team{
+  padding: 5px;
+  width: 300px;
+  height: 40px;
+  border-bottom: 1px solid darkgreen;
+  background-color: #a8e9a8;
+  text-align: center;
 }

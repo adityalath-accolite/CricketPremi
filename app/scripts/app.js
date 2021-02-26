@@ -26,10 +26,18 @@ angular
       })
       .when('/home', {
         templateUrl: 'views/home.html',
-        controller: 'MainCtrl',
+        controller: 'HomePage',
+        controllerAs: 'main'
+      })
+      .when('/scorecard', {
+        templateUrl: 'views/scorecard.html',
+        controller: 'ScoreCard',
         controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .factory('Data', function(){
+    return { Field: '' };
   });
