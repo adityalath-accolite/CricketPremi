@@ -1,6 +1,6 @@
 'use strict';
 
-const KEY = '4jUt8b9e8xMvcEyPQJkNh8nPaTw1';  //fWOeJIGXHcUNEzDuhw0IIF7n5qa2
+const KEY = '58sYxn59vnTFZgFdatNq9ciyytm2';  //fWOeJIGXHcUNEzDuhw0IIF7n5qa2  //4jUt8b9e8xMvcEyPQJkNh8nPaTw1  //qN5lGSliJEWyEQR645HO7saiS6S2 //58sYxn59vnTFZgFdatNq9ciyytm2
 const CRIC_URL = 'http://cricapi.com/api/matches/' + KEY;
 const SCORES = 'https://cricapi.com/api/cricketScore/' + KEY;
 const SCORECARD = 'https://cricapi.com/api/fantasySummary/' + KEY;
@@ -26,9 +26,9 @@ angular.module('viaGruntApp')
     $scope.username = "";
     $scope.email = "";
     $scope.password = "";
-    $scope.gender = "";
-    $scope.dob = "";
-    $scope.occ = "";
+    $scope.gender = "prefer not to say";
+    $scope.dob = new Date();
+    $scope.occ = "Engineer";
     $scope.occupations = ["Student","Engineer","Scientist","Doctor","Politician","Actor","Singer","Cricketer","Sportsperson","Carpenter","Architect","Buttler","Cook","Other"];
     
     $scope.isPasswordValid = () => {
@@ -128,18 +128,40 @@ angular.module('viaGruntApp')
     $scope.match_id = Data;
 
     $scope.idToScoreboard = (id) => {
-      $scope.match_id.Field = id;
-      console.log("unique_id is ",id)
+      $scope.match_id.MatchId = id;
       $location.path("/scorecard");
     }
   })
   .controller('ScoreCard', function ($scope, Data, $interval, $http, $location) {
     $scope.match_id = Data;
+    $scope.showScorecard = true;
     $scope.response;
-    $http.get(SCORECARD+"?unique_id=1233972").then((resp) => {     //+$scope.match_id.Field
-      $scope.response = resp.data.data;  
-      console.log("new player in the league is ",resp.data.data);
+    $scope.inning_arr = ["1st inning", "2nd inning", "3rd inning", "4th inning"];
+    $scope.inningNumber = 0;
+    
+    $http.get(SCORECARD+"?unique_id=1233972").then((resp) => {     //+$scope.match_id.MatchId
+      $scope.response = resp.data.data;
+      $scope.inningNumber = $scope.response.batting.length-1;
+      $scope.inning = $scope.inning_arr[$scope.inningNumber];  
     })
 
-    $scope.showScorecard = false;
+    $scope.player_id = Data;
+    $scope.playerProfile = (id) => {
+      $scope.player_id.PlayerId = id;
+      $location.path("/playerprofile");
+    }
+
+    $scope.changeInning = () => {
+      if($scope.inning == '1st inning')
+        $scope.inningNumber = 0;
+      else if($scope.inning == '2nd inning')
+        $scope.inningNumber = 1;
+      else if($scope.inning == '3rd inning')
+        $scope.inningNumber = 2;
+      else if($scope.inning == '4th inning')
+        $scope.inningNumber = 3;  
+    }
+  })
+  .controller('PlayerProfile', function ($scope, Data, $interval, $http, $location) {
+    $scope.player_id = Data;
   });

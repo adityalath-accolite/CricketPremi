@@ -1,7 +1,7 @@
 <div class="principal">
     <h1 class="heading">Welcome to CricketPremi!</h1>
     <div class="matchList" ng-controller="HomePage">
-        <div class="match" ng-click="$parent.idToScoreboard(match.unique_id)" ng-repeat="match in ongoingMatches | orderBy:'ongoingMatches.dateTimeGMT':true" ng-click="alert('gsg')">
+        <div class="match" ng-click="$parent.idToScoreboard(match.unique_id)" ng-repeat="match in ongoingMatches | orderBy:'ongoingMatches.dateTimeGMT':true">
             <span class="score" style="flex: 1;"></span>
             <span class="score" style="flex: 2;">{{match.team1}}</span>
             <div class="matter" style="flex: 6;">

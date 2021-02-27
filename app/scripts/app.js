@@ -34,10 +34,15 @@ angular
         controller: 'ScoreCard',
         controllerAs: 'main'
       })
+      .when('/playerprofile', {
+        templateUrl: 'views/playerProfile.html',
+        controller: 'PlayerProfile',
+        controllerAs: 'main'
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
   .factory('Data', function(){
-    return { Field: '' };
+    return { MatchId: '' , PlayerId: ''};
   });

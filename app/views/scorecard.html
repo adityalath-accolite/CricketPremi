@@ -1,32 +1,57 @@
-<div ng-controller="ScoreCard">
-    <div class="full">
-        <div class="loginHeader">
-            <button ng-click="showScorecard=true" class="options">Scorecard</button>
-            <b>|</b>
-            <button ng-click="showScorecard=false" class="options">Teams</button>
-        </div>
-        
-        <div class="container">
-            <div ng-if="!showScorecard">
-                <div class="bothTeams">
-                    <div>
-                        <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[0].name}}</div>
-                        <div class="team" ng-repeat="player in response.team[0].players">
-                            {{player.name}}
-                        </div>
+<div class="full" ng-controller="ScoreCard">
+    <div class="loginHeader">
+        <button ng-click="showScorecard=true" class="options">Scorecard</button>
+        <b>|</b>
+        <button ng-click="showScorecard=false" class="options">Teams</button>
+    </div>
+
+    <div class="container" style="text-align: start;">
+        <div ng-if="!showScorecard">
+            <div class="bothTeams">
+                <div>
+                    <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[0].name}}</div>
+                    <div class="team" ng-click="$parent.playerProfile(player.pid)"
+                        ng-repeat="player in response.team[0].players">
+                        {{player.name}}
                     </div>
-                    <div>
-                        <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[1].name}}</div>
-                        <div class="team" ng-repeat="player in response.team[1].players">
-                            {{player.name}}
-                        </div>
+                </div>
+                <div>
+                    <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[1].name}}</div>
+                    <div class="team" ng-click="$parent.playerProfile(player.pid)"
+                        ng-repeat="player in response.team[1].players">
+                        {{player.name}}
                     </div>
                 </div>
             </div>
-            <div ng-if="login">
-        
+        </div>
+        <div ng-if="showScorecard">
+            <select class="inningSelector" ng-model="$parent.inning" ng-change="changeInning()">
+                <option name='inn' ng-repeat="inn in inning_arr | limitTo:$parent.response.batting.length">{{inn}}</option>
+            </select>
+            <div class="scoreDetails">
+                <h3>{{$parent.response.batting[$parent.inningNumber].title}}</h3>
+                <div class="battingScore" ng-repeat="piliyar in response.batting[inningNumber].scores">
+                    <span style="flex:6">{{piliyar.batsman}}</span>
+                    <span style="flex:2">{{piliyar.R}}</span>
+                    <span style="flex:2">{{piliyar.B}}</span>
+                    <span style="flex:1">{{piliyar['4s']}}</span>
+                    <span style="flex:1">{{piliyar['6s']}}</span>
+                    <span style="flex:2">{{piliyar.SR}}</span>
+                    <span style="flex:2">{{piliyar.M}}</span>
+                </div>
+            </div>
+            <div class="scoreDetails">
+                <h3>{{$parent.response.bowling[$parent.inningNumber].title}}</h3>
+                <div class="battingScore" ng-repeat="piliyar in response.bowling[inningNumber].scores">
+                    <span style="flex:6">{{piliyar.bowler}}</span>
+                    <span style="flex:2">{{piliyar.O}}</span>
+                    <span style="flex:2">{{piliyar.R}}</span>
+                    <span style="flex:1">{{piliyar.W}}</span>
+                    <span style="flex:1">{{piliyar['0s']}}</span>
+                    <span style="flex:2">{{piliyar.Econ}}</span>
+                    <span style="flex:2">{{+piliyar.WD + +piliyar.NB}}
+                </div>
             </div>
         </div>
-        
-        </div>
+    </div>
 </div>
