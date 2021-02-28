@@ -28,9 +28,21 @@
             <select class="inningSelector" ng-model="$parent.inning" ng-change="changeInning()">
                 <option name='inn' ng-repeat="inn in inning_arr | limitTo:$parent.response.batting.length">{{inn}}</option>
             </select>
+            <div style="margin: 10px;" ng-repeat="arr in score_arr">
+                {{arr}}
+            </div>
             <div class="scoreDetails">
                 <h3>{{$parent.response.batting[$parent.inningNumber].title}}</h3>
-                <div class="battingScore" ng-repeat="piliyar in response.batting[inningNumber].scores">
+                <div class="battingScore" style="background-color: rgb(66, 228, 66);">
+                    <span style="flex:6">Batsman</span>
+                    <span style="flex:2">Runs</span>
+                    <span style="flex:2">Balls</span>
+                    <span style="flex:1">4s</span>
+                    <span style="flex:1">6s</span>
+                    <span style="flex:2">SR</span>
+                    <span style="flex:2">Minutes spent</span>
+                </div>
+                <div class="battingScore" ng-repeat="piliyar in response.batting[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
                     <span style="flex:6">{{piliyar.batsman}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
                     <span style="flex:2">{{piliyar.B}}</span>
@@ -42,7 +54,16 @@
             </div>
             <div class="scoreDetails">
                 <h3>{{$parent.response.bowling[$parent.inningNumber].title}}</h3>
-                <div class="battingScore" ng-repeat="piliyar in response.bowling[inningNumber].scores">
+                <div class="battingScore" style="background-color: rgb(66, 228, 66);">
+                    <span style="flex:6">Bowler</span>
+                    <span style="flex:2">Overs</span>
+                    <span style="flex:2">Runs</span>
+                    <span style="flex:1">Wickets</span>
+                    <span style="flex:1">Dots</span>
+                    <span style="flex:2">Economy</span>
+                    <span style="flex:2">Extras</span>
+                </div>
+                <div class="battingScore" ng-repeat="piliyar in response.bowling[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
                     <span style="flex:6">{{piliyar.bowler}}</span>
                     <span style="flex:2">{{piliyar.O}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>

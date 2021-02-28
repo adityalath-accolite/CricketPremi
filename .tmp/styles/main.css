@@ -178,3 +178,35 @@ body {
   text-align: center;
   flex-direction: row;
 }
+
+.playerPhoto{
+  padding: 30px;
+  border-radius: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+table{
+  border: 2px solid black;
+  width: 98%;
+  margin: 10px;
+  font-size: large;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even){
+  background-color: #eee;
+}
+
+tr:nth-child(odd){
+  background-color:#fff;
+}
+
+th{
+  background-color: black;
+  color: white;
+}

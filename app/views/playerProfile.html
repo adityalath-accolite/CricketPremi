@@ -1,3 +1,226 @@
-<div ng-controller="PlayerProfile">
-<p>xxxx {{player_id.PlayerId}} xxxx</p>
+<div class="full" ng-controller="PlayerProfile" style="overflow-y: hidden;">
+    <div class="loginHeader">
+        <div style="flex: 3;">
+            <img class="playerPhoto" ng-src="{{response.imageURL}}" alt={{response.name}}>
+        </div>
+        <div style="flex: 7;padding:10px;">
+            <h1 style="text-align: center;">{{response.name}}</h1>
+            <p>{{response.profile}}</p>
+            <p><b>Full name: </b>{{response.fullName}}</p>
+            <p><b>Country: </b>{{response.country}}</p>
+            <p><b>Born: </b>{{response.born}}</p>
+            <p><b>Current age: </b>{{response.currentAge}}</p>
+            <p><b>Role: </b>{{response.playingRole}}</p>
+            <p><b>Batting style: </b>{{response.battingStyle}}</p>
+            <p><b>Bowling style: </b>{{response.bowlingStyle}}</p>
+            <p><b>Teams played for: </b>{{response.majorTeams}}</p>
+        </div>
+    </div>
+    <select class="inningSelector" ng-model="propertyValue">
+        <option name='stat' ng-repeat="stat in property">{{stat}}</option>
+    </select>
+    <div ng-if="propertyValue == 'Batting'">
+        <table>
+            <tr>
+                <th>Format</th>
+                <th>Matches</th>
+                <th>Innings</th>
+                <th>Runs</th>
+                <th>Average</th>
+                <th>Highest score</th>
+                <th>Strike rate</th>
+                <th>Fifties</th>
+                <th>Centuries</th>
+                <th>Sixes</th>
+                <th>Not outs</th>
+            </tr>
+            <tr>
+                <td>List A</td>
+                <td>{{response.data.batting.listA.Mat}}</td>
+                <td>{{response.data.batting.listA.Inns}}</td>
+                <td>{{response.data.batting.listA.Runs}}</td>
+                <td>{{response.data.batting.listA.Ave}}</td>
+                <td>{{response.data.batting.listA.HS}}</td>
+                <td>{{response.data.batting.listA.SR}}</td>
+                <td>{{response.data.batting.listA['50']}}</td>
+                <td>{{response.data.batting.listA['100']}}</td>
+                <td>{{response.data.batting.listA['6s']}}</td>
+                <td>{{response.data.batting.listA.NO}}</td>
+            </tr>
+            <tr>
+                <td>First class</td>
+                <td>{{response.data.batting.firstClass.Mat}}</td>
+                <td>{{response.data.batting.firstClass.Inns}}</td>
+                <td>{{response.data.batting.firstClass.Runs}}</td>
+                <td>{{response.data.batting.firstClass.Ave}}</td>
+                <td>{{response.data.batting.firstClass.HS}}</td>
+                <td>{{response.data.batting.firstClass.SR}}</td>
+                <td>{{response.data.batting.firstClass['50']}}</td>
+                <td>{{response.data.batting.firstClass['100']}}</td>
+                <td>{{response.data.batting.firstClass['6s']}}</td>
+                <td>{{response.data.batting.firstClass.NO}}</td>
+            </tr>
+            <tr>
+                <td>T20Is</td>
+                <td>{{response.data.batting.T20Is.Mat}}</td>
+                <td>{{response.data.batting.T20Is.Inns}}</td>
+                <td>{{response.data.batting.T20Is.Runs}}</td>
+                <td>{{response.data.batting.T20Is.Ave}}</td>
+                <td>{{response.data.batting.T20Is.HS}}</td>
+                <td>{{response.data.batting.T20Is.SR}}</td>
+                <td>{{response.data.batting.T20Is['50']}}</td>
+                <td>{{response.data.batting.T20Is['100']}}</td>
+                <td>{{response.data.batting.T20Is['6s']}}</td>
+                <td>{{response.data.batting.T20Is.NO}}</td>
+            </tr>
+            <tr>
+                <td>ODIs</td>
+                <td>{{response.data.batting.ODIs.Mat}}</td>
+                <td>{{response.data.batting.ODIs.Inns}}</td>
+                <td>{{response.data.batting.ODIs.Runs}}</td>
+                <td>{{response.data.batting.ODIs.Ave}}</td>
+                <td>{{response.data.batting.ODIs.HS}}</td>
+                <td>{{response.data.batting.ODIs.SR}}</td>
+                <td>{{response.data.batting.ODIs['50']}}</td>
+                <td>{{response.data.batting.ODIs['100']}}</td>
+                <td>{{response.data.batting.ODIs['6s']}}</td>
+                <td>{{response.data.batting.ODIs.NO}}</td>
+            </tr>
+            <tr>
+                <td>Tests</td>
+                <td>{{response.data.batting.tests.Mat}}</td>
+                <td>{{response.data.batting.tests.Inns}}</td>
+                <td>{{response.data.batting.tests.Runs}}</td>
+                <td>{{response.data.batting.tests.Ave}}</td>
+                <td>{{response.data.batting.tests.HS}}</td>
+                <td>{{response.data.batting.tests.SR}}</td>
+                <td>{{response.data.batting.tests['50']}}</td>
+                <td>{{response.data.batting.tests['100']}}</td>
+                <td>{{response.data.batting.tests['6s']}}</td>
+                <td>{{response.data.batting.tests.NO}}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="propertyValue == 'Bowling'">
+        <table>
+            <tr>
+                <th>Format</th>
+                <th>Matches</th>
+                <th>Innings</th>
+                <th>Wickets</th>
+                <th>Average</th>
+                <th>Economy</th>
+                <th>BBI</th>
+                <th>BBM</th>
+                <th>5W</th>
+                <th>10W</th>
+                <th>Strike rate</th>
+            </tr>
+            <tr>
+                <td>List A</td>
+                <td>{{response.data.bowling.listA.Mat}}</td>
+                <td>{{response.data.bowling.listA.Inns}}</td>
+                <td>{{response.data.bowling.listA.Wkts}}</td>
+                <td>{{response.data.bowling.listA.Ave}}</td>
+                <td>{{response.data.bowling.listA.Econ}}</td>
+                <td>{{response.data.bowling.listA.BBI}}</td>
+                <td>{{response.data.bowling.listA.BBM}}</td>
+                <td>{{response.data.bowling.listA['5w']}}</td>
+                <td>{{response.data.bowling.listA['10']}}</td>
+                <td>{{response.data.bowling.listA.SR}}</td>
+            </tr>
+            <tr>
+                <td>First class</td>
+                <td>{{response.data.bowling.firstClass.Mat}}</td>
+                <td>{{response.data.bowling.firstClass.Inns}}</td>
+                <td>{{response.data.bowling.firstClass.Wkts}}</td>
+                <td>{{response.data.bowling.firstClass.Ave}}</td>
+                <td>{{response.data.bowling.firstClass.Econ}}</td>
+                <td>{{response.data.bowling.firstClass.BBI}}</td>
+                <td>{{response.data.bowling.firstClass.BBM}}</td>
+                <td>{{response.data.bowling.firstClass['5w']}}</td>
+                <td>{{response.data.bowling.firstClass['10']}}</td>
+                <td>{{response.data.bowling.firstClass.SR}}</td>
+            </tr>
+            <tr>
+                <td>T20Is</td>
+                <td>{{response.data.bowling.T20Is.Mat}}</td>
+                <td>{{response.data.bowling.T20Is.Inns}}</td>
+                <td>{{response.data.bowling.T20Is.Wkts}}</td>
+                <td>{{response.data.bowling.T20Is.Ave}}</td>
+                <td>{{response.data.bowling.T20Is.Econ}}</td>
+                <td>{{response.data.bowling.T20Is.BBI}}</td>
+                <td>{{response.data.bowling.T20Is.BBM}}</td>
+                <td>{{response.data.bowling.T20Is['5w']}}</td>
+                <td>{{response.data.bowling.T20Is['10']}}</td>
+                <td>{{response.data.bowling.T20Is.SR}}</td>
+            </tr>
+            <tr>
+                <td>ODIs</td>
+                <td>{{response.data.bowling.ODIs.Mat}}</td>
+                <td>{{response.data.bowling.ODIs.Inns}}</td>
+                <td>{{response.data.bowling.ODIs.Wkts}}</td>
+                <td>{{response.data.bowling.ODIs.Ave}}</td>
+                <td>{{response.data.bowling.ODIs.Econ}}</td>
+                <td>{{response.data.bowling.ODIs.BBI}}</td>
+                <td>{{response.data.bowling.ODIs.BBM}}</td>
+                <td>{{response.data.bowling.ODIs['5w']}}</td>
+                <td>{{response.data.bowling.ODIs['10']}}</td>
+                <td>{{response.data.bowling.ODIs.SR}}</td>
+            </tr>
+            <tr>
+                <td>Tests</td>
+                <td>{{response.data.bowling.tests.Mat}}</td>
+                <td>{{response.data.bowling.tests.Inns}}</td>
+                <td>{{response.data.bowling.tests.Wkts}}</td>
+                <td>{{response.data.bowling.tests.Ave}}</td>
+                <td>{{response.data.bowling.tests.Econ}}</td>
+                <td>{{response.data.bowling.tests.BBI}}</td>
+                <td>{{response.data.bowling.tests.BBM}}</td>
+                <td>{{response.data.bowling.tests['5w']}}</td>
+                <td>{{response.data.bowling.tests['10']}}</td>
+                <td>{{response.data.bowling.tests.SR}}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="propertyValue == 'Fielding'">
+        <table style="width: 50%;">
+            <tr>
+                <th>Format</th>
+                <th>Matches</th>
+                <th>Catches</th>
+                <th>Stumpings</th>
+            </tr>
+            <tr>
+                <td>List A</td>
+                <td>{{response.data.batting.listA.Mat}}</td>
+                <td>{{response.data.batting.listA.Ct}}</td>
+                <td>{{response.data.batting.listA.St}}</td>
+            </tr>
+            <tr>
+                <td>First class</td>
+                <td>{{response.data.batting.firstClass.Mat}}</td>
+                <td>{{response.data.batting.firstClass.Ct}}</td>
+                <td>{{response.data.batting.firstClass.St}}</td>
+            </tr>
+            <tr>
+                <td>T20Is</td>
+                <td>{{response.data.batting.T20Is.Mat}}</td>
+                <td>{{response.data.batting.T20Is.Ct}}</td>
+                <td>{{response.data.batting.T20Is.St}}</td>
+            </tr>
+            <tr>
+                <td>ODIs</td>
+                <td>{{response.data.batting.ODIs.Mat}}</td>
+                <td>{{response.data.batting.ODIs.Ct}}</td>
+                <td>{{response.data.batting.ODIs.St}}</td>
+            </tr>
+            <tr>
+                <td>Tests</td>
+                <td>{{response.data.batting.tests.Mat}}</td>
+                <td>{{response.data.batting.tests.Ct}}</td>
+                <td>{{response.data.batting.tests.St}}</td>
+            </tr>
+        </table>
+    </div>
 </div>

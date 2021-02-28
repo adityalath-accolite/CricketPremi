@@ -1,9 +1,10 @@
 'use strict';
 
-const KEY = '58sYxn59vnTFZgFdatNq9ciyytm2';  //fWOeJIGXHcUNEzDuhw0IIF7n5qa2  //4jUt8b9e8xMvcEyPQJkNh8nPaTw1  //qN5lGSliJEWyEQR645HO7saiS6S2 //58sYxn59vnTFZgFdatNq9ciyytm2
+const KEY = 'Rf0L4fPzDHfY3JTahEdvwZcXc5p1';  //fWOeJIGXHcUNEzDuhw0IIF7n5qa2  //4jUt8b9e8xMvcEyPQJkNh8nPaTw1  //qN5lGSliJEWyEQR645HO7saiS6S2 //58sYxn59vnTFZgFdatNq9ciyytm2  //Rf0L4fPzDHfY3JTahEdvwZcXc5p1
 const CRIC_URL = 'http://cricapi.com/api/matches/' + KEY;
 const SCORES = 'https://cricapi.com/api/cricketScore/' + KEY;
 const SCORECARD = 'https://cricapi.com/api/fantasySummary/' + KEY;
+const PLAYER_INFO = 'https://cricapi.com/api/playerStats/' + KEY;
 
 /**
  * @ngdoc function
@@ -138,12 +139,27 @@ angular.module('viaGruntApp')
     $scope.response;
     $scope.inning_arr = ["1st inning", "2nd inning", "3rd inning", "4th inning"];
     $scope.inningNumber = 0;
+    $scope.score_arr = [1,2];
     
-    $http.get(SCORECARD+"?unique_id=1233972").then((resp) => {     //+$scope.match_id.MatchId
+    $http.get(SCORECARD + "?unique_id=1233972").then((resp) => {     //SCORECARD + "?unique_id=" + $scope.match_id.MatchId   SCORECARD + "?unique_id=1233972"  
       $scope.response = resp.data.data;
       $scope.inningNumber = $scope.response.batting.length-1;
       $scope.inning = $scope.inning_arr[$scope.inningNumber];  
     })
+
+    $http.get(SCORES + "?unique_id=1233972").then((resp) => {      //SCORES + "?unique_id=" + $scope.match_id.MatchId    SCORES + "?unique_id=1233972"
+      let score = resp.data.score;
+      let arr = score.split(' v ');
+      angular.forEach(arr,(ele) => {
+        let str = $scope.response.batting[0].title.split(' ')
+        if(ele.includes(str[0])){
+          $scope.score_arr[0] = ele;
+        }
+        else{
+          $scope.score_arr[1] = ele; 
+        }
+      })
+    });
 
     $scope.player_id = Data;
     $scope.playerProfile = (id) => {
@@ -162,6 +178,13 @@ angular.module('viaGruntApp')
         $scope.inningNumber = 3;  
     }
   })
-  .controller('PlayerProfile', function ($scope, Data, $interval, $http, $location) {
+  .controller('PlayerProfile', function ($scope, Data, $http) {
     $scope.player_id = Data;
+    //console.log($scope.player_id.PlayerId);
+    $scope.response;
+    $scope.property = ['Batting','Bowling','Fielding'];
+    $scope.propertyValue = 'Batting';
+    $http.get(PLAYER_INFO + "?pid=" + $scope.player_id.PlayerId).then((resp) => {    //PLAYER_INFO + "?pid=" + $scope.player_id.PlayerId    PLAYER_INFO + "?pid=35320"
+      $scope.response = resp.data;      
+    })
   });
