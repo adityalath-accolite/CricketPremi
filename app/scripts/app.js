@@ -26,10 +26,23 @@ angular
       })
       .when('/home', {
         templateUrl: 'views/home.html',
-        controller: 'MainCtrl',
+        controller: 'HomePage',
+        controllerAs: 'main'
+      })
+      .when('/scorecard', {
+        templateUrl: 'views/scorecard.html',
+        controller: 'ScoreCard',
+        controllerAs: 'main'
+      })
+      .when('/playerprofile', {
+        templateUrl: 'views/playerProfile.html',
+        controller: 'PlayerProfile',
         controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .factory('Data', function(){
+    return { MatchId: '' , PlayerId: '', ScoreArr:[]};
   });

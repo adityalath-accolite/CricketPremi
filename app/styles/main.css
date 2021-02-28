@@ -1,20 +1,20 @@
 .loginOrSignUp{
   width: 40%;
   height: 65%;
-  background-color: #90ee90;
+  background-color: lightgreen;
   position: absolute;
   top: 40%;
   left: 50%;
-  border: 5px solid rgb(0, 22, 0);
+  border: 5px solid green;
   transform: translate(-50%, -50%);
 }
 
 .loginHeader{
+  padding-bottom: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-bottom: 5px solid darkgreen; 
 }
 
 .options{
@@ -94,6 +94,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -116,4 +117,107 @@ body {
 
 .teams{
   flex: 50;
+}
+
+.full{
+  overflow-y: scroll;
+  padding: 0%;
+  width: 80%;
+  height: 100%;
+  background-color: #90ee90;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bothTeams{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  padding-top: 3%;
+  gap: 50px;
+}
+
+.team{
+  padding: 5px;
+  width: 300px;
+  border-bottom: 1px solid darkgreen;
+  background-color: #a8e9a8;
+}
+
+.inningSelector{
+  margin: 10px;
+  height: 30px;
+  width: 100px;
+  background-color: #a9d1a9;
+}
+
+.scoreDetails{
+  background-color: #a8e9a8;
+  margin: 10px 50px 10px 50px;
+  padding: 10px;
+}
+
+.battingScore{
+  display: flex;
+  padding: 10px;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 40px;
+  border: 1px solid darkgreen;
+  background-color: #a8e9a8;
+  text-align: center;
+  flex-direction: row;
+}
+
+.playerPhoto{
+  padding: 30px;
+  border-radius: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+table{
+  border: 2px solid black;
+  width: 98%;
+  margin: 10px;
+  font-size: large;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even){
+  background-color: #eee;
+}
+
+tr:nth-child(odd){
+  background-color:#fff;
+}
+
+th{
+  background-color: black;
+  color: white;
+}
+
+.photoInTeams{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  /* padding: 30px;
+  border-radius: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  position: relative;
+  transform: translateX(-50%);   */
 }
