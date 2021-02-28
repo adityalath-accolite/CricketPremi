@@ -44,5 +44,5 @@ angular
       });
   })
   .factory('Data', function(){
-    return { MatchId: '' , PlayerId: ''};
+    return { MatchId: '' , PlayerId: '', ScoreArr:[]};
   });

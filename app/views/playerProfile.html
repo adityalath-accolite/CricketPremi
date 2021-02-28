@@ -34,7 +34,7 @@
                 <th>Sixes</th>
                 <th>Not outs</th>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.listA">
                 <td>List A</td>
                 <td>{{response.data.batting.listA.Mat}}</td>
                 <td>{{response.data.batting.listA.Inns}}</td>
@@ -47,7 +47,7 @@
                 <td>{{response.data.batting.listA['6s']}}</td>
                 <td>{{response.data.batting.listA.NO}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.firstClass">
                 <td>First class</td>
                 <td>{{response.data.batting.firstClass.Mat}}</td>
                 <td>{{response.data.batting.firstClass.Inns}}</td>
@@ -60,7 +60,7 @@
                 <td>{{response.data.batting.firstClass['6s']}}</td>
                 <td>{{response.data.batting.firstClass.NO}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.T20Is">
                 <td>T20Is</td>
                 <td>{{response.data.batting.T20Is.Mat}}</td>
                 <td>{{response.data.batting.T20Is.Inns}}</td>
@@ -73,7 +73,7 @@
                 <td>{{response.data.batting.T20Is['6s']}}</td>
                 <td>{{response.data.batting.T20Is.NO}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.ODIs">
                 <td>ODIs</td>
                 <td>{{response.data.batting.ODIs.Mat}}</td>
                 <td>{{response.data.batting.ODIs.Inns}}</td>
@@ -86,7 +86,7 @@
                 <td>{{response.data.batting.ODIs['6s']}}</td>
                 <td>{{response.data.batting.ODIs.NO}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.tests">
                 <td>Tests</td>
                 <td>{{response.data.batting.tests.Mat}}</td>
                 <td>{{response.data.batting.tests.Inns}}</td>

@@ -12,14 +12,16 @@
                     <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[0].name}}</div>
                     <div class="team" ng-click="$parent.playerProfile(player.pid)"
                         ng-repeat="player in response.team[0].players">
-                        {{player.name}}
+                        <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg">
+                        &nbsp&nbsp&nbsp {{player.name}}
                     </div>
                 </div>
                 <div>
                     <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[1].name}}</div>
                     <div class="team" ng-click="$parent.playerProfile(player.pid)"
                         ng-repeat="player in response.team[1].players">
-                        {{player.name}}
+                        <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg">
+                        &nbsp&nbsp&nbsp {{player.name}}
                     </div>
                 </div>
             </div>
@@ -28,12 +30,22 @@
             <select class="inningSelector" ng-model="$parent.inning" ng-change="changeInning()">
                 <option name='inn' ng-repeat="inn in inning_arr | limitTo:$parent.response.batting.length">{{inn}}</option>
             </select>
+            <div style="margin: 10px;" ng-if="response.toss_winner_team">
+                Toss: {{response.toss_winner_team}}
+            </div>
+            <div style="margin: 10px;" ng-if="response.winner_team">
+                Winner: {{response.winner_team}}
+            </div>
+            <div style="margin: 10px;" ng-if="response['man-of-the-match']">
+                Man of the match: {{response['man-of-the-match'].name}}
+            </div><br>
             <div style="margin: 10px;" ng-repeat="arr in score_arr">
                 {{arr}}
             </div>
             <div class="scoreDetails">
                 <h3>{{$parent.response.batting[$parent.inningNumber].title}}</h3>
                 <div class="battingScore" style="background-color: rgb(66, 228, 66);">
+                    <span style="flex:1"></span>
                     <span style="flex:6">Batsman</span>
                     <span style="flex:2">Runs</span>
                     <span style="flex:2">Balls</span>
@@ -43,6 +55,7 @@
                     <span style="flex:2">Minutes spent</span>
                 </div>
                 <div class="battingScore" ng-repeat="piliyar in response.batting[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
+                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" height="40px" width="32px" style="flex:1;">
                     <span style="flex:6">{{piliyar.batsman}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
                     <span style="flex:2">{{piliyar.B}}</span>
@@ -55,6 +68,7 @@
             <div class="scoreDetails">
                 <h3>{{$parent.response.bowling[$parent.inningNumber].title}}</h3>
                 <div class="battingScore" style="background-color: rgb(66, 228, 66);">
+                    <span style="flex:1"></span>
                     <span style="flex:6">Bowler</span>
                     <span style="flex:2">Overs</span>
                     <span style="flex:2">Runs</span>
@@ -64,6 +78,7 @@
                     <span style="flex:2">Extras</span>
                 </div>
                 <div class="battingScore" ng-repeat="piliyar in response.bowling[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
+                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" height="40px" width="32px" style="flex:1;">
                     <span style="flex:6">{{piliyar.bowler}}</span>
                     <span style="flex:2">{{piliyar.O}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
