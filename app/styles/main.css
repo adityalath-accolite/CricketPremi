@@ -139,7 +139,7 @@ body {
   left: 50%;
   position: relative;
   transform: translateX(-50%);
-  padding-top: 3%;
+  padding: 3%;
   gap: 50px;
 }
 
