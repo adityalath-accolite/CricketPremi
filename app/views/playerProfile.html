@@ -1,7 +1,7 @@
 <div class="full" ng-controller="PlayerProfile" style="overflow-y: hidden;">
     <div class="loginHeader">
         <div style="flex: 3;">
-            <img class="playerPhoto" ng-src="{{response.imageURL}}" alt={{response.name}}>
+            <img class="playerPhoto" ng-src="{{response.imageURL}}" onerror="this.src='../images/profile.jpg'">
         </div>
         <div style="flex: 7;padding:10px;">
             <h1 style="text-align: center;">{{response.name}}</h1>
