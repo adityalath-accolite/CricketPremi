@@ -12,7 +12,7 @@
                     <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[0].name}}</div>
                     <div class="team" ng-click="$parent.playerProfile(player.pid)"
                         ng-repeat="player in response.team[0].players">
-                        <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg">
+                        <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg" onerror="this.src='../images/profile.jpg'">
                         &nbsp&nbsp&nbsp {{player.name}}
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                     <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[1].name}}</div>
                     <div class="team" ng-click="$parent.playerProfile(player.pid)"
                         ng-repeat="player in response.team[1].players">
-                        <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg">
+                        <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg" onerror="this.src='../images/profile.jpg'">
                         &nbsp&nbsp&nbsp {{player.name}}
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <span style="flex:2">Minutes spent</span>
                 </div>
                 <div class="battingScore" ng-repeat="piliyar in response.batting[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
-                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" height="40px" width="32px" style="flex:1;">
+                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" onerror="this.src='../images/profile.jpg'" height="40px" width="32px" style="flex:1;">
                     <span style="flex:6">{{piliyar.batsman}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
                     <span style="flex:2">{{piliyar.B}}</span>
@@ -78,7 +78,7 @@
                     <span style="flex:2">Extras</span>
                 </div>
                 <div class="battingScore" ng-repeat="piliyar in response.bowling[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
-                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" height="40px" width="32px" style="flex:1;">
+                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" onerror="this.src='../images/profile.jpg'" height="40px" width="32px" style="flex:1;">
                     <span style="flex:6">{{piliyar.bowler}}</span>
                     <span style="flex:2">{{piliyar.O}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
