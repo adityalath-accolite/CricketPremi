@@ -48,7 +48,7 @@
 }
 
 #submit:disabled{
-  background-color: red;
+  background-color: rgb(77, 77, 133);
 }
 
 body {
