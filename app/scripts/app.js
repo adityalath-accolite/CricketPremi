@@ -21,23 +21,19 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/loginOrSignUp.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'MainCtrl'
       })
       .when('/home', {
         templateUrl: 'views/home.html',
-        controller: 'HomePage',
-        controllerAs: 'main'
+        controller: 'HomePage'
       })
       .when('/scorecard', {
         templateUrl: 'views/scorecard.html',
-        controller: 'ScoreCard',
-        controllerAs: 'main'
+        controller: 'ScoreCard'
       })
       .when('/playerprofile', {
         templateUrl: 'views/playerProfile.html',
-        controller: 'PlayerProfile',
-        controllerAs: 'main'
+        controller: 'PlayerProfile'
       })
       .otherwise({
         redirectTo: '/'

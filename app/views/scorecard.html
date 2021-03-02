@@ -55,7 +55,7 @@
                     <span style="flex:2">Minutes spent</span>
                 </div>
                 <div class="battingScore" ng-repeat="piliyar in response.batting[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
-                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" onerror="this.src='../images/profile.jpg'" height="40px" width="32px" style="flex:1;">
+                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" onerror="this.src='../images/download.png'" height="40px" width="32px" style="flex:1;">
                     <span style="flex:6">{{piliyar.batsman}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
                     <span style="flex:2">{{piliyar.B}}</span>
@@ -78,7 +78,7 @@
                     <span style="flex:2">Extras</span>
                 </div>
                 <div class="battingScore" ng-repeat="piliyar in response.bowling[inningNumber].scores" ng-click="$parent.playerProfile(piliyar.pid)">
-                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" onerror="this.src='../images/profile.jpg'" height="40px" width="32px" style="flex:1;">
+                    <img ng-src="https://www.cricapi.com/playerpic/{{piliyar.pid}}.jpg" onerror="this.src='../images/download.png'" height="40px" width="32px" style="flex:1;">
                     <span style="flex:6">{{piliyar.bowler}}</span>
                     <span style="flex:2">{{piliyar.O}}</span>
                     <span style="flex:2">{{piliyar.R}}</span>
