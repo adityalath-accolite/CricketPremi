@@ -142,7 +142,7 @@ angular.module('viaGruntApp')
     $scope.score_arr;
 
     let updateScore = () => {
-      $http.get(SCORES + "?unique_id=" + $scope.match_id.MatchId).then((resp) => {      //SCORES + "?unique_id=" + $scope.match_id.MatchId   SCORES + "?unique_id=1233972"
+      $http.get(SCORES + "?unique_id=" + $scope.match_id.MatchId).then((resp) => {
         let arr = resp.data.score.split(' v ');
         angular.forEach(arr, (ele) => {
           let str = $scope.response.batting[0].title.split(' ');
@@ -155,7 +155,7 @@ angular.module('viaGruntApp')
     }
     
     let updateScorecard = async () => {
-      await $http.get(SCORECARD + "?unique_id=" + $scope.match_id.MatchId).then((resp) => {     //SCORECARD + "?unique_id=" + $scope.match_id.MatchId   SCORECARD + "?unique_id=1233972"  
+      await $http.get(SCORECARD + "?unique_id=" + $scope.match_id.MatchId).then((resp) => {
         $scope.response = resp.data.data;
       })
       return 0;
@@ -199,7 +199,7 @@ angular.module('viaGruntApp')
     $scope.response;
     $scope.property = ['Batting','Bowling','Fielding'];
     $scope.propertyValue = 'Batting';
-    $http.get(PLAYER_INFO + "?pid=" + $scope.player_id.PlayerId).then((resp) => {    //PLAYER_INFO + "?pid=" + $scope.player_id.PlayerId    PLAYER_INFO + "?pid=35320"
+    $http.get(PLAYER_INFO + "?pid=" + $scope.player_id.PlayerId).then((resp) => {
       $scope.response = resp.data;      
     })
   });
