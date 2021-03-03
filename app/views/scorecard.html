@@ -40,7 +40,7 @@
                 Man of the match: {{response['man-of-the-match'].name}}
             </div><br>
             <div style="margin: 10px;" ng-repeat="arr in score_arr">
-                {{arr}}
+                {{arr.replace('&amp;amp;','and')}}
             </div>
             <div class="scoreDetails">
                 <h3>{{$parent.response.batting[$parent.inningNumber].title}}</h3>
