@@ -1,41 +1,24 @@
 .loginOrSignUp{
   width: 40%;
   height: 65%;
-  background-color: lightgreen;
+  background-color: rgb(208, 230, 210);
   position: absolute;
   top: 40%;
   left: 50%;
-  border: 5px solid green;
+  border: 5px solid rgb(101, 114, 102);
   transform: translate(-50%, -50%);
-}
-
-.loginHeader{
-  padding-bottom: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .options{
   text-align: center;
   flex: 1;
   height: 30px;
-  background-color: rgb(34, 214, 34);
+  background-color: rgb(101, 114, 102);
 }
 
 .warn{
   color: red;
   font-size: small;
-  font: 100;
-}
-
-.container{
-  text-align: center;
-}
-
-.input{
-  margin-top: 12px;
 }
 
 #submit{
@@ -58,12 +41,9 @@ body {
 
 .matchList{
   width: 100%;
-  height: inherit;
   overflow-y: scroll;
-  background-color: lightGreen;
-  position: relative;
   flex: 50;
-  border: 5px solid darkgreen;
+  border: 5px solid rgb(101, 114, 102);
 }
 
 .copyright{
@@ -82,13 +62,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  /* align-items: center; */
   transform: translate(-50%, -50%); 
 }
 
 .match{
   padding: 5px;
-  border-bottom: 1px solid darkgreen;
+  border-bottom: 1px solid black;
   text-align: center;
   background-image: url("../images/down.jpeg");
   background-repeat: no-repeat;
@@ -124,7 +103,7 @@ body {
   padding: 0%;
   width: 80%;
   height: 100%;
-  background-color: #90ee90;
+  background-color: rgb(208, 230, 210);
   position: absolute;
   top: 0%;
   left: 50%;
@@ -147,18 +126,18 @@ body {
   padding: 5px;
   width: 300px;
   border-bottom: 1px solid darkgreen;
-  background-color: #a8e9a8;
+  background-color: rgb(188, 207, 189);
 }
 
 .inningSelector{
   margin: 10px;
   height: 30px;
   width: 100px;
-  background-color: #a9d1a9;
+  background-color: rgb(101, 114, 102);
 }
 
 .scoreDetails{
-  background-color: #a8e9a8;
+  background-color: rgb(219, 240, 221);
   margin: 10px 50px 10px 50px;
   padding: 10px;
 }
@@ -171,8 +150,8 @@ body {
   transform: translateX(-50%);
   width: 80%;
   height: 40px;
-  border: 1px solid darkgreen;
-  background-color: #a8e9a8;
+  border: 1px solid black;
+  background-color: rgb(207, 226, 208);
   text-align: center;
   flex-direction: row;
 }
@@ -181,8 +160,8 @@ body {
   padding: 30px;
   border-radius: 50%;
   left: 50%;
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   position: relative;
   transform: translateX(-50%);
 }
@@ -213,4 +192,9 @@ th{
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+.logger{
+  display: flex;
+  flex-direction: row;
 }

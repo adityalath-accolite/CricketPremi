@@ -1,57 +1,100 @@
 <div class="loginOrSignUp" ng-controller="MainCtrl">
-    <div class="loginHeader">
+    <div class="logger">
         <button ng-click="login=false" class="options">SignUp</button>
-        <b>|</b>
         <button ng-click="login=true" class="options">Login</button>
     </div>
     
-    <div class="container">
+    <div style="padding: 10px;">
         <div ng-if="!login">
             <form name="userInfo">
-                Fullname: <input class="input" type="text" name="name" ng-model="$parent.name"><br>
-                <span class="warn" ng-show="userInfo.name.$touched && !$parent.name.includes(' ')">
-                    *Fullname should contain firstname as well as lastname
-                </span><br>
-    
-                Username: <input class="input" type="text" name="username" ng-model="$parent.username"><br>
-                <span class="warn" ng-show="userInfo.username.$touched && $parent.username.includes(' ')">
-                    *space not allowed in username
-                </span>
-                <span class="warn" ng-show="userInfo.username.$touched && $parent.username.length<5">
-                    *username must be atleast of length 5
-                </span>
-                <span class="warn" ng-show="userInfo.username.$touched && $parent.isUsernameAlreadyUsed()">
-                    *this username is already used, try using another one 
-                </span><br>
-    
-                Email address: <input class="input" type="email" name="email" ng-model="$parent.email"><br>
-                <span class="warn" ng-show="userInfo.email.$touched && userInfo.email.$invalid">
-                    *email is wrong
-                </span>      
-                <span class="warn" ng-show="userInfo.email.$touched && $parent.isEmailAlreadyUsed()">
-                    *this email is already used, try using another one 
-                </span><br>
 
-                Password: <input class="input" type="password" name="password" ng-model="$parent.password"><br>
-                <span class="warn" ng-show="userInfo.password.$touched && !$parent.isPasswordValid()">
-                    *passord must contain a numeric, a small letter and a capital letter
-                </span>
-                <span class="warn" ng-show="userInfo.password.$touched && $parent.password.length<10">
-                    *password must be atleast of length 10
-                </span><br>
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 1;">Fullname: </span>
+                        <input style="flex:2;" type="text" name="name" ng-model="$parent.name">
+                        <span style="flex:2;"></span><br>
+                    </div>
+                    <span class="warn" ng-show="userInfo.name.$touched && !$parent.name.includes(' ')">
+                        *Fullname should contain firstname as well as lastname
+                    </span><br>
+                </div>
 
-                Gender: 
-                <input class="input" type="radio" name="gender" value="Male" ng-model="$parent.gender" required>Male
-                <input type="radio" name="gender" value="Female" ng-model="$parent.gender">Female
-                <input type="radio" name="gender" value="prefer not to say" ng-model="$parent.gender">Prefer not to say
-                <br><br>
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 1;">Username: </span>
+                        <input style="flex:2;" type="text" name="username" ng-model="$parent.username">
+                        <span style="flex:2;"></span><br>
+                    </div>
+                    <span class="warn" ng-show="userInfo.username.$touched && $parent.username.includes(' ')">
+                        *space not allowed in username
+                    </span>
+                    <span class="warn" ng-show="userInfo.username.$touched && $parent.username.length<5">
+                        *username must be atleast of length 5
+                    </span>
+                    <span class="warn" ng-show="userInfo.username.$touched && $parent.isUsernameAlreadyUsed()">
+                        *this username is already used, try using another one 
+                    </span><br>    
+                </div>                
+               
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 1;">Email address: </span>
+                        <input style="flex:2;" type="email" name="email" ng-model="$parent.email">
+                        <span style="flex:2;"></span><br>
+                    </div>
+                    <span class="warn" ng-show="userInfo.email.$touched && userInfo.email.$invalid">
+                        *email is wrong
+                    </span>      
+                    <span class="warn" ng-show="userInfo.email.$touched && $parent.isEmailAlreadyUsed()">
+                        *this email is already used, try using another one 
+                    </span><br>
+                </div>
+                
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 1;">Password: </span>
+                        <input style="flex:2;" type="password" name="password" ng-model="$parent.password">
+                        <span style="flex:2;"></span><br>
+                    </div>
+                    <span class="warn" ng-show="userInfo.password.$touched && !$parent.isPasswordValid()">
+                        *passord must contain a numeric, a small letter and a capital letter
+                    </span>
+                    <span class="warn" ng-show="userInfo.password.$touched && $parent.password.length<10">
+                        *password must be atleast of length 10
+                    </span><br>
+                </div>
 
-                Date of Birth: <input class="input" type="date" name="dob" ng-model="$parent.dob"><br><br>
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 3;">Gender: </span>
+                        <input style="flex:1;" type="radio" name="gender" value="Male" ng-model="$parent.gender">Male
+                        <input style="flex:1;" type="radio" name="gender" value="Female" ng-model="$parent.gender">Female
+                        <input style="flex:1;" type="radio" name="gender" value="prefer not to say" ng-model="$parent.gender">Prefer not to say
+                        <span style="flex:6;"></span><br>
+                    </div>
+                    <br>
+                </div>
+                
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 1;">Date of Birth: </span>
+                        <input style="flex:2;" type="date" name="dob" ng-model="$parent.dob">
+                        <span style="flex:2;"></span><br>
+                    </div>
+                    <br>
+                </div>
 
-                Occupation: <select class="input" ng-model="$parent.occ">
-                    <option name='occ' ng-repeat="x in occupations | orderBy">{{x}}</option>
-                </select><br><br>
-
+                <div style="margin: 10px;">
+                    <div class="logger">
+                        <span style="flex: 1;">Occupation: </span>
+                        <select style="flex:2;" ng-model="$parent.occ">
+                            <option name='occ' ng-repeat="x in occupations | orderBy">{{x}}</option>
+                        </select>
+                        <span style="flex:2;"></span><br>
+                    </div>
+                    <br>
+                </div>
+                
                 <button class="input" id="submit" ng-click="$parent.onSubmit()" 
                     ng-disabled="!$parent.name.includes(' ') || $parent.username.includes(' ') || $parent.username=='' || $parent.username.length<5 || $parent.password.length<10 || !$parent.isPasswordValid() || $parent.password=='' || $parent.gender=='' || $parent.dob=='' || $parent.occ=='' || $parent.email=='' || $parent.isEmailAlreadyUsed() || $parent.isUsernameAlreadyUsed()"
                 ><b>Submit</b>   
@@ -60,9 +103,24 @@
         </div>
 
         <div ng-if="login">
-            Username: <input class="input" type="text" name="username" ng-model="$parent.loginUsername"><br>
-            Password: <input class="input" type="password" name="password" ng-model="$parent.loginPassword"><br>
-            <button class="input" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br><br>
+
+            <div style="margin: 10px;">
+                <div class="logger">
+                    <span style="flex: 1;">Username: </span>
+                    <input style="flex:2;" type="text" name="username" ng-model="$parent.loginUsername">
+                    <span style="flex:2;"></span><br>
+                </div>
+            </div>
+
+            <div style="margin: 10px;">
+                <div class="logger">
+                    <span style="flex: 1;">Password: </span>
+                    <input style="flex:2;" type="password" name="password" ng-model="$parent.loginPassword">
+                    <span style="flex:2;"></span><br>
+                </div>
+            </div>
+
+            <button style="margin: 10px;" id="submit" ng-click="$parent.onLogin()" ng-disabled="$parent.loginUsername=='' ||  $parent.loginPassword==''">Login</button><br><br>
             <span ng-show="!$parent.loggedIn">Invalid credentials, try again with valid credentials</span>
         </div>
     </div>
