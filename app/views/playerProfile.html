@@ -116,7 +116,7 @@
                 <th>10W</th>
                 <th>Strike rate</th>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.listA">
                 <td>List A</td>
                 <td>{{response.data.bowling.listA.Mat}}</td>
                 <td>{{response.data.bowling.listA.Inns}}</td>
@@ -129,7 +129,7 @@
                 <td>{{response.data.bowling.listA['10']}}</td>
                 <td>{{response.data.bowling.listA.SR}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.firstClass">
                 <td>First class</td>
                 <td>{{response.data.bowling.firstClass.Mat}}</td>
                 <td>{{response.data.bowling.firstClass.Inns}}</td>
@@ -142,7 +142,7 @@
                 <td>{{response.data.bowling.firstClass['10']}}</td>
                 <td>{{response.data.bowling.firstClass.SR}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.T20Is">
                 <td>T20Is</td>
                 <td>{{response.data.bowling.T20Is.Mat}}</td>
                 <td>{{response.data.bowling.T20Is.Inns}}</td>
@@ -155,7 +155,7 @@
                 <td>{{response.data.bowling.T20Is['10']}}</td>
                 <td>{{response.data.bowling.T20Is.SR}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.ODIs">
                 <td>ODIs</td>
                 <td>{{response.data.bowling.ODIs.Mat}}</td>
                 <td>{{response.data.bowling.ODIs.Inns}}</td>
@@ -168,7 +168,7 @@
                 <td>{{response.data.bowling.ODIs['10']}}</td>
                 <td>{{response.data.bowling.ODIs.SR}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.tests">
                 <td>Tests</td>
                 <td>{{response.data.bowling.tests.Mat}}</td>
                 <td>{{response.data.bowling.tests.Inns}}</td>
@@ -191,31 +191,31 @@
                 <th>Catches</th>
                 <th>Stumpings</th>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.listA">
                 <td>List A</td>
                 <td>{{response.data.batting.listA.Mat}}</td>
                 <td>{{response.data.batting.listA.Ct}}</td>
                 <td>{{response.data.batting.listA.St}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.firstClass">
                 <td>First class</td>
                 <td>{{response.data.batting.firstClass.Mat}}</td>
                 <td>{{response.data.batting.firstClass.Ct}}</td>
                 <td>{{response.data.batting.firstClass.St}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.T20Is">
                 <td>T20Is</td>
                 <td>{{response.data.batting.T20Is.Mat}}</td>
                 <td>{{response.data.batting.T20Is.Ct}}</td>
                 <td>{{response.data.batting.T20Is.St}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.ODIs">
                 <td>ODIs</td>
                 <td>{{response.data.batting.ODIs.Mat}}</td>
                 <td>{{response.data.batting.ODIs.Ct}}</td>
                 <td>{{response.data.batting.ODIs.St}}</td>
             </tr>
-            <tr>
+            <tr ng-if="response.data.batting.tests">
                 <td>Tests</td>
                 <td>{{response.data.batting.tests.Mat}}</td>
                 <td>{{response.data.batting.tests.Ct}}</td>

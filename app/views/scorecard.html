@@ -1,15 +1,14 @@
 <div class="full" ng-controller="ScoreCard">
-    <div class="loginHeader">
+    <div class="logger">
         <button ng-click="showScorecard=true" class="options">Scorecard</button>
-        <b>|</b>
         <button ng-click="showScorecard=false" class="options">Teams</button>
     </div>
 
-    <div class="container" style="text-align: start;">
+    <div style="text-align: start;">
         <div ng-if="!showScorecard">
             <div class="bothTeams">
                 <div>
-                    <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[0].name}}</div>
+                    <div class="team" style="background-color: rgb(101, 114, 102);">{{response.team[0].name}}</div>
                     <div class="team" ng-click="$parent.playerProfile(player.pid)"
                         ng-repeat="player in response.team[0].players">
                         <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg" onerror="this.src='../images/profile.jpg'">
@@ -17,7 +16,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="team" style="background-color: rgb(6, 141, 6);">{{response.team[1].name}}</div>
+                    <div class="team" style="background-color: rgb(101, 114, 102);">{{response.team[1].name}}</div>
                     <div class="team" ng-click="$parent.playerProfile(player.pid)"
                         ng-repeat="player in response.team[1].players">
                         <img class="photoInTeams" ng-src="https://www.cricapi.com/playerpic/{{player.pid}}.jpg" onerror="this.src='../images/profile.jpg'">
@@ -44,7 +43,7 @@
             </div>
             <div class="scoreDetails">
                 <h3>{{$parent.response.batting[$parent.inningNumber].title}}</h3>
-                <div class="battingScore" style="background-color: rgb(66, 228, 66);">
+                <div class="battingScore" style="background-color: rgb(101, 114, 102);">
                     <span style="flex:1"></span>
                     <span style="flex:6">Batsman</span>
                     <span style="flex:2">Runs</span>
@@ -67,7 +66,7 @@
             </div>
             <div class="scoreDetails">
                 <h3>{{$parent.response.bowling[$parent.inningNumber].title}}</h3>
-                <div class="battingScore" style="background-color: rgb(66, 228, 66);">
+                <div class="battingScore" style="background-color: rgb(101, 114, 102);">
                     <span style="flex:1"></span>
                     <span style="flex:6">Bowler</span>
                     <span style="flex:2">Overs</span>
