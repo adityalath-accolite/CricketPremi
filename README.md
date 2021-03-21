@@ -1,3 +1,8 @@
+npm install
+npm install -g yo grunt-cli bower
+npm install -g generator-angular
+yo angular
+
 # via-grunt
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
